@@ -4,6 +4,11 @@ onmessage = function(e){
 	if(e.data == "stop"){
 		stopped = true;
 	}
+	else
+		if(e.data == "start"){
+		stopped = false;
+	    }
+		
 }
 function is_prim(n){
 	for (var i=2; i*i <= n; i++)
