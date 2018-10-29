@@ -25,8 +25,4 @@ function calculeaza_prime(start_value){
 else
 	postMessage("gata");
 }
-
-for  (var i = 1e9; i < 1e10; i++)
-	if(is_prim(i))
-		postMessage(i);
-	postMessage("gata");
+calculeaza_prime(1e9);
