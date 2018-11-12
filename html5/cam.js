@@ -1,4 +1,4 @@
-document.getElementById("id_logic_version").innerHTML = "Bussiness version: 2018.11.12.4";
+document.getElementById("id_logic_version").innerHTML = "Bussiness version: 2018.11.12.5";
 document.getElementById("id_button").addEventListener("click", start);
 document.getElementById("id_video").addEventListener("touchstart", on_touch);
 document.getElementById("id_video").addEventListener("mousedown", on_touch);
@@ -16,7 +16,7 @@ function on_failure(e)
 function start()
 {
 	var c = {audio: true, video: {facingMode:"environment"}};
-    navigator.mediaDvices.getUserMedia(c).then(on_success).catch(on_failure)	;
+    navigator.mediaDeices.getUserMedia(c).then(on_success).catch(on_failure)	;
 }
 function on_touch(e)
 {
