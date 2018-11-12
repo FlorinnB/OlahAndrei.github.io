@@ -5,7 +5,7 @@ document.getElementById("id_video").addEventListener("mousedown", on_touch);
 
 function on_success(e)
 {
-	document.getElementById("id_video").srcObjet = e;
+	document.getElementById("id_video").srcObject = e;
 }
 //------------------------------
 function on_failure(e)
