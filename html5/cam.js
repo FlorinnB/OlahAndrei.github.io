@@ -1,4 +1,4 @@
-document.getElementById("id_logic_version").innerHTML = "Bussiness version: 2018.11.12.5";
+document.getElementById("id_logic_version").innerHTML = "Bussiness version: 2018.11.12.6";
 document.getElementById("id_button").addEventListener("click", start);
 document.getElementById("id_video").addEventListener("touchstart", on_touch);
 document.getElementById("id_video").addEventListener("mousedown", on_touch);
