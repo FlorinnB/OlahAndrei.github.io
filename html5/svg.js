@@ -7,15 +7,14 @@ function on_device_orientation(e){
 	document.getElementById("id_beta").innerHTML = e.beta;
 	document.getElementById("id_gamma").innerHTML = e.gamma;
 	
-	var canvas = document.getElementById("id_canvas");
-	var context = canvas.getContext("2d");
+	var svg = document.getElementById("id_svg");
+	var cerc = document.getElementById("id_cerc");
+
+	var R=20;
+	var svg_height = svg.getAttribute("height");
+	var svg_width = svg.getAttribute("width");
 	
-		context.clearRect(0,0, canvas.width, canvas.height);
-	var R=10;
-	context.beginPath();
-	context.arc(canvas.width / 2 + e.gamma/90*(canvas.width / 2-R),
-	            canvas.width / 2 + e.gamma/90*(canvas.width / 2-R),
-	            R,0,2*Math.PI);
-	context.strike();
+	cerc.setAttribute("cx", svg_width / 2 + e.gamma/90*(svg_width / 2-R));
+	cerc.setAttribute("cy", svg_height / 2 + e.beta/90*(svg_height / 2-R));
 	
 }
