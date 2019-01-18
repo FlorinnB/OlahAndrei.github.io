@@ -1,3 +1,4 @@
+@ -1,46 +0,0 @@
 document.getElementById("id_logic_version").innerHTML = "Bussiness version: 2018.11.26.6";
 var canvas = document.getElementById("id_canvas");
 canvas.addEventListener("touchstart", on_touch_start);
