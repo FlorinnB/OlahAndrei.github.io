@@ -1,9 +1,7 @@
 package com.andreiolah.heartratemonitor;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
-
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.hardware.Camera;
 import android.hardware.Camera.PreviewCallback;
@@ -16,6 +14,8 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 
 
@@ -72,6 +72,10 @@ public class HeartRateMonitor extends AppCompatActivity  {
 
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "HeartRateMonitor:DoNotDimScreen");
+    }
+    public void StopMonitor (View view){
+        Intent StopActivitiMonitor = new Intent(this, HeartRateMainPage.class);
+        startActivity(StopActivitiMonitor);
     }
 
     /**
@@ -258,6 +262,7 @@ public class HeartRateMonitor extends AppCompatActivity  {
         }
 
         return result;
+
     }
 }
 
