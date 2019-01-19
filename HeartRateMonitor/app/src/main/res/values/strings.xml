@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_ceator">OlahAndrei</string>
     <string name="app_name">HeartRateMonitor</string>
     <string name="default_text">---</string>
 </resources>
