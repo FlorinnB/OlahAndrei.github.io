@@ -89,7 +89,7 @@ public class HeartRateMonitor extends AppCompatActivity  {
     public void onResume() {
         super.onResume();
 
-        wakeLock.acquire(100);
+        wakeLock.acquire(10);
 
         camera = Camera.open();
 
