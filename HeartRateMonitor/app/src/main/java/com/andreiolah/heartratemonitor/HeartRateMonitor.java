@@ -13,13 +13,24 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 
 
 public class HeartRateMonitor extends AppCompatActivity  {
+
+    TextView BeatField;
+    Button SaveButton;
 
     private static final String TAG = "HeartRateMonitor";
     private static final AtomicBoolean processing = new AtomicBoolean(false);
@@ -68,15 +79,48 @@ public class HeartRateMonitor extends AppCompatActivity  {
         previewHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
         image = findViewById(R.id.image);
-        text = (TextView) findViewById(R.id.text);
+        text = (TextView) findViewById(R.id.textBeat);
+
+        BeatField = findViewById(R.id.textBeat);
+        SaveButton = findViewById(R.id.buttonSave);
 
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "HeartRateMonitor:DoNotDimScreen");
+
+        Button StopMonitor = (Button) findViewById(R.id.buttonStop);
+        StopMonitor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent StopActivitiMonitor = new Intent(HeartRateMonitor.this, HeartRateMainPage.class);
+                startActivity(StopActivitiMonitor);
+            }
+        });
+
+        SaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                writeBeatFile();
+            }
+        });
     }
-    public void StopMonitor (View view){
-        Intent StopActivitiMonitor = new Intent(this, HeartRateMainPage.class);
-        startActivity(StopActivitiMonitor);
+
+    public void writeBeatFile() {
+        String textToSave = BeatField.getText().toString();
+
+        try {
+            FileOutputStream fileOutputStream = openFileOutput("BeatData.txt", MODE_PRIVATE);
+            fileOutputStream.write(textToSave.getBytes());
+            fileOutputStream.close();
+
+            Toast.makeText(getApplicationContext(), "Beat Saved", Toast.LENGTH_SHORT).show();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     /**
      * {@inheritDoc}
@@ -264,5 +308,7 @@ public class HeartRateMonitor extends AppCompatActivity  {
         return result;
 
     }
+
+
 }
 
